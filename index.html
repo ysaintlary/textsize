@@ -1,0 +1,69 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<script>
+	</script>
+	<style>
+
+
+	
+
+	body{
+		color:#333;
+		font-size:1rem;}
+	.nuit{
+		background-color:#001972;
+		color:#fff;}
+	
+
+
+	</style>
+</head>
+
+<body>
+
+	<header>
+		<button id="toggleNightDay">Nuit</button>
+		<button id="textSize-inscrease">Augmenter la taille du texte</button>
+		<button id="textSize-decrease">Réduire la taille du texte</button>
+	</header>
+
+
+	<main>
+		<h1 id="titre"> Tests de trame en svg inline css</h1>
+		<h2 class="normal">Normal</h2>
+		<h2 class="base64">Base 64</h2>
+		
+	</main>
+
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+
+	<script>
+		$("#toggleNightDay").click(function() {
+	        $("body").toggleClass("nuit");
+	        time = $("#toggleNightDay").text();
+	        if(time == "Nuit jquery"){
+		        $("#toggleNightDay").text("Jour");
+		    }else{
+		    	$("#toggleNightDay").text("Nuit");
+		    }
+	    });
+
+	    $("#textSize-inscrease").click(function() {modifyTextSize(0.1);});
+
+	    $("#textSize-decrease").click(function() {modifyTextSize(-0.1);});
+
+	    var t;			
+		t = 1;
+
+	    function modifyTextSize(valeur){
+	    	t = t + valeur;
+			$("main")[0].style.fontSize = t + "rem";
+
+	    }
+
+	</script>
+</body>
+
+
+</html>
