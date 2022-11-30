@@ -7,15 +7,35 @@
 
 
 	
-
+	html{
+		font-size:16px;
+		cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 200 200'%3e%3cdefs%3e%3cstyle%3e .cls-1 %7b fill: transparent; stroke: transparent; stroke-miterlimit: 10; stroke-width: 10px; %7d .cls-2 %7b fill: %23fff; stroke: %23000; stroke-miterlimit: 10; stroke-width: 10px; %7d %3c/style%3e%3c/defs%3e%3ccircle class='cls-1' cx='100' cy='100' r='95'/%3e%3cline class='cls-2' x1='100' y1='39.83' x2='100' y2='159.83'/%3e%3cline class='cls-2' x1='40' y1='99.83' x2='160' y2='99.83'/%3e%3c/svg%3e") 16 16, auto;
+		min-height:100vh;
+		}
 	body{
 		color:#333;
 		font-size:1rem;}
 	.nuit{
 		background-color:#001972;
 		color:#fff;}
-	
-
+	button:hover{
+		cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 200 200'%3e%3cdefs%3e%3cstyle%3e .cls-1 %7b fill: transparent; stroke: transparent; stroke-miterlimit: 10; stroke-width: 10px; %7d .cls-2 %7b fill: %23fff; stroke: %23000; stroke-miterlimit: 10; stroke-width: 10px; %7d %3c/style%3e%3c/defs%3e%3ccircle class='cls-1' cx='100' cy='100' r='95'/%3e%3cg transform='rotate(45 100 100)'%3e%3cline class='cls-2' x1='100' y1='39.83' x2='100' y2='159.83'/%3e%3cline class='cls-2' x1='40' y1='99.83' x2='160' y2='99.83'/%3e%3c/g%3e%3c/svg%3e") 16 16, auto;
+	}
+	button:focus{
+		cursor: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 200 200'%3e%3cdefs%3e%3cstyle%3e .cls-1 %7b fill: %23fff; stroke: %23000; stroke-miterlimit: 10; stroke-width: 10px; %7d .cls-2 %7b fill: %23fff; stroke: %23000; stroke-miterlimit: 10; stroke-width: 10px; %7d %3c/style%3e%3c/defs%3e%3ccircle class='cls-1' cx='100' cy='100' r='95'/%3e%3cg transform='rotate(45 100 100)'%3e%3cline class='cls-2' x1='100' y1='39.83' x2='100' y2='159.83'/%3e%3cline class='cls-2' x1='40' y1='99.83' x2='160' y2='99.83'/%3e%3c/g%3e%3c/svg%3e") 16 16, auto;
+		outline:2px solid blue;
+		
+	}
+	div.loading{
+		position:absolute;
+		top:0;left:0;
+		width:100%;height:100%;
+		background-color:#fff;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 
 	</style>
 </head>
@@ -41,10 +61,12 @@
 
 		<p>Curabitur semper pretium sodales. Sed viverra enim vel urna pellentesque maximus. Phasellus luctus, tellus sit amet pharetra sollicitudin, dolor ante varius elit, quis scelerisque augue felis vitae elit. Aenean aliquam vestibulum pulvinar. Morbi quis placerat dolor. Nulla velit tortor, tincidunt non leo et, aliquet bibendum nisi. Nam ultricies, tellus dignissim vulputate gravida, nisl arcu viverra neque, quis dapibus nisl magna eu est. Nulla posuere semper mi ut ultricies. Nunc ullamcorper dictum imperdiet. Nulla maximus porta ullamcorper. Sed scelerisque lectus ut dui rhoncus placerat. Sed varius magna nec nisl convallis tincidunt.</p>
 
-		<div class="cercles">
-			
-		</div>
 	</main>
+
+	<div class="loading">
+		<!-- <h1>C'est le titre</h1> -->
+		<img src="giphy.gif">
+	</div>
 
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
 
@@ -60,17 +82,28 @@
 	    });
 
 	    $("#textSize-inscrease").click(function() {modifyTextSize(0.1);});
-
 	    $("#textSize-decrease").click(function() {modifyTextSize(-0.1);});
-
 	    var t;			
 		t = 1;
-
 	    function modifyTextSize(valeur){
 	    	t = t + valeur;
 			$("main")[0].style.fontSize = t + "rem";
-
 	    }
+
+
+	    $(window).on('load', function() {
+		    // executes when complete page is fully loaded, including all frames, objects and images
+		    // console.log("window is loaded");
+
+		    	
+			setTimeout(hideLoading, 500);
+			function hideLoading() {
+				$(".loading").fadeOut();
+			}
+		   
+		});
+
+
 
 	</script>
 </body>
